@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Task Page</title>
+    <title>Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,11 +15,42 @@
 </head>
 <body>
 
+    
+
     <div class="container pt-5">
-        <h1>Hello Sir, This is Task 1</h1>
-        <h4>Task Done By Aashish Kumar Yadav</h4>
-        <p>This is a dynamic content: {{ dynamic_data }}</p>
+        
+        <h1>Employee List</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Phone Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for emp in employess %}
+
+              <tr>
+                <th scope="row"> {{ forloop.counter }} </th>
+
+                <td> <a href="{% url 'employee_detail' emp.id %}"> {{ emp.first_name }} {{ emp.last_name }}</a> </td>
+                <td> {{ emp.designation }} </td>
+                <td> {{ emp.phone_number }} </td>
+              </tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+        <!-- <p>This is a dynamic content: {{ dynamic_data }}</p> -->
+        <!-- <img src= "{% static 'images/girl.png'}"> -->
     </div>
+
+    
+    <!-- {% for i in employess %}
+      <h4>{{ i }}</h4>
+    {% endfor %} -->
 
 </body>
 </html>
